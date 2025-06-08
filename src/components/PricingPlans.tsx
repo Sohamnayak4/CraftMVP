@@ -92,7 +92,7 @@ export const PricingPlans = () => {
               }`}
             >
               {plan.isPopular && (
-                <div className="absolute -right-8 top-6">
+                <div className="absolute -right-8 top-3">
                   <div className="bg-gradient-to-r from-purple-600 to-pink-600 text-white text-xs font-bold px-8 py-1.5 transform rotate-45">
                     POPULAR
                   </div>
