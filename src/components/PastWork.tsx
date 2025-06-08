@@ -19,7 +19,7 @@ export const PastWork = () => {
       id: 1,
       title: "FocusTube",
       category: "Landing Page",
-      imageUrl: "/public/Screenshot 2025-05-23 175501.png",
+      imageUrl: "/Screenshot 2025-05-23 175501.png",
       description: "A landing page for a YouTube channel that helps people focus and get things done.",
       link: "https://focustube.sohamnayak.tech/",
       completedIn: 12,
