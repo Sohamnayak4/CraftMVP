@@ -24,6 +24,15 @@ export const PastWork = () => {
       link: "https://focustube.sohamnayak.tech/",
       completedIn: 12,
     },
+    {
+      id: 2,
+      title: "MessageCraft",
+      category: "Web App",
+      imageUrl: "/messagecraft-screenshot.png",
+      description: "A cold message generator for LinkedIn, where users can generate detailed messages to connect with the right people.",
+      link: "https://message-craft-flow.vercel.app/",
+      completedIn: 12,
+    },
   ];
 
   const categories = ['All', ...Array.from(new Set(projects.map(project => project.category)))];
