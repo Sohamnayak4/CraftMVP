@@ -19,7 +19,7 @@ export const PastWork = () => {
       id: 1,
       title: "FocusTube",
       category: "Landing Page",
-      imageUrl: "/Screenshot 2025-05-23 175501.png",
+      imageUrl: "/focustube-landing-page-screenshot.png",
       description: "A landing page for a YouTube channel that helps people focus and get things done.",
       link: "https://focustube.sohamnayak.tech/",
       completedIn: 12,
@@ -72,7 +72,7 @@ export const PastWork = () => {
               <div className="relative aspect-video overflow-hidden">
                 <img 
                   src={project.imageUrl} 
-                  alt={project.title} 
+                  alt={`${project.title} - ${project.category} by CraftMVP - ${project.description}`}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-60"></div>
