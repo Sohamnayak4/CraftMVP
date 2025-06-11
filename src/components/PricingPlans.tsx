@@ -19,7 +19,7 @@ interface PricingPlan {
 export const PricingPlans = () => {
   const plans: PricingPlan[] = [
     {
-      name: "Landing Page",
+      name: "Landing Page (In 2 Days)",
       originalPrice: 499,
       currentPrice: 199,
       description: "Perfect for validating your idea with a professional landing page.",
