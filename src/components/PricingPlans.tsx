@@ -20,8 +20,8 @@ export const PricingPlans = () => {
   const plans: PricingPlan[] = [
     {
       name: "Landing Page",
-      originalPrice: 699,
-      currentPrice: 499,
+      originalPrice: 499,
+      currentPrice: 199,
       description: "Perfect for validating your idea with a professional landing page.",
       features: [
         { name: "Single page design", included: true },
