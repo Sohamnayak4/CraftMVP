@@ -33,6 +33,15 @@ export const PastWork = () => {
       link: "https://message-craft-flow.vercel.app/",
       completedIn: 12,
     },
+    {
+      id: 3,
+      title: "Portfolio",
+      category: "My personal website",
+      imageUrl: "/portfolio-screenshot.png",
+      description: "My personal website, where I showcase my work and share my thoughts. Built with Next.js, Tailwind CSS, and TypeScript.",
+      link: "https://sohamnayak.tech/",
+      completedIn: 12,
+    }
   ];
 
   const categories = ['All', ...Array.from(new Set(projects.map(project => project.category)))];
