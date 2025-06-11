@@ -4,6 +4,7 @@ import { Hero } from './components/Hero';
 import { PricingPlans } from './components/PricingPlans';
 import { PastWork } from './components/PastWork';
 import { Footer } from './components/Footer';
+import { Analytics } from '@vercel/analytics/react';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <PastWork />
       </main>
       <Footer />
+      <Analytics />
     </div>
   );
 }
