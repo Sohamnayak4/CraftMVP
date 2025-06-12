@@ -20,8 +20,8 @@ export const PricingPlans = () => {
   const plans: PricingPlan[] = [
     {
       name: "Landing Page (In 2 Days)",
-      originalPrice: 499,
-      currentPrice: 199,
+      originalPrice: 299,
+      currentPrice: 99,
       description: "Perfect for validating your idea with a professional landing page.",
       features: [
         { name: "Single page design", included: true },
@@ -36,8 +36,8 @@ export const PricingPlans = () => {
     },
     {
       name: "Standard Pack",
-      originalPrice: 2499,
-      currentPrice: 1999,
+      originalPrice: 1999,
+      currentPrice: 999,
       description: "Complete MVP with core features to test your product hypothesis.",
       features: [
         { name: "Multi-page application", included: true },
@@ -53,8 +53,8 @@ export const PricingPlans = () => {
     },
     {
       name: "Pro Pack",
-      originalPrice: 3999,
-      currentPrice: 2999,
+      originalPrice: 2999,
+      currentPrice: 1499,
       description: "Full-featured MVP with advanced functionality ready for investors.",
       features: [
         { name: "Complete web application", included: true },
