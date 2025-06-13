@@ -39,11 +39,11 @@ export const Header = () => {
             <a href="#" className="text-gray-300 hover:text-white transition-colors">
               Home
             </a>
-            <a href="#pricing" className="text-gray-300 hover:text-white transition-colors">
-              Pricing
-            </a>
             <a href="#work" className="text-gray-300 hover:text-white transition-colors">
               Our Work
+            </a>
+            <a href="#pricing" className="text-gray-300 hover:text-white transition-colors">
+              Pricing
             </a>
             <ContactButton />
           </nav>
@@ -70,18 +70,18 @@ export const Header = () => {
               Home
             </a>
             <a 
-              href="#pricing" 
-              className="text-gray-300 hover:text-white transition-colors"
-              onClick={() => setIsOpen(false)}
-            >
-              Pricing
-            </a>
-            <a 
               href="#work" 
               className="text-gray-300 hover:text-white transition-colors"
               onClick={() => setIsOpen(false)}
             >
               Our Work
+            </a>
+            <a 
+              href="#pricing" 
+              className="text-gray-300 hover:text-white transition-colors"
+              onClick={() => setIsOpen(false)}
+            >
+              Pricing
             </a>
             <ContactButton fullWidth />
           </nav>

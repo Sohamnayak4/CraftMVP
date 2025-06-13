@@ -1,124 +1,161 @@
-import React, { useState } from 'react';
-import { ArrowRight } from 'lucide-react';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 
+// Interface for project data
 interface Project {
   id: number;
   title: string;
-  category: string;
-  imageUrl: string;
+  videoUrl: string;
   description: string;
-  completedIn: number;
-  link: string;
 }
 
+// --- Framer Motion Animation Variants ---
+
+// Reusable variants for both the title and description
+const contentVariants = {
+  enter: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.3, ease: 'easeOut' },
+  },
+  exit: {
+    opacity: 0,
+    y: 10, // Animate out downwards for a smoother feel
+    transition: { duration: 0.2, ease: 'easeIn' },
+  },
+};
+
 export const PastWork = () => {
-  const [activeTab, setActiveTab] = useState<string>('All');
-  
+  const [currentIndex, setCurrentIndex] = useState(0);
+
   const projects: Project[] = [
     {
       id: 1,
       title: "FocusTube",
-      category: "Landing Page",
-      imageUrl: "/focustube-landing-page-screenshot.png",
-      description: "A landing page for a YouTube channel that helps people focus and get things done.",
-      link: "https://focustube.sohamnayak.tech/",
-      completedIn: 12,
+      videoUrl: "public/Screen Recording 2025-06-13 103320.mp4", 
+      description: "A chrome extension that helps you focus while using YouTube for work and education.",
     },
     {
       id: 2,
-      title: "MessageCraft",
-      category: "Web App",
-      imageUrl: "/messagecraft-screenshot.png",
-      description: "A cold message generator for LinkedIn, where users can generate detailed messages to connect with the right people.",
-      link: "https://message-craft-flow.vercel.app/",
-      completedIn: 12,
+      title: "LuxeDrive",
+      videoUrl: "public/Screen Recording 2025-06-13 110055.mp4",
+      description: "A car rental website that allows users to rent cars from a wide variety of cars and locations.",
     },
     {
       id: 3,
-      title: "Portfolio",
-      category: "My personal website",
-      imageUrl: "/portfolio-screenshot.png",
-      description: "My personal website, where I showcase my work and share my thoughts. Built with Next.js, Tailwind CSS, and TypeScript.",
-      link: "https://sohamnayak.tech/",
-      completedIn: 12,
-    }
+      title: "ModernUI",
+      videoUrl: "public/Screen Recording 2025-06-13 111403.mp4",
+      description: "A modern UI design system for creating beautiful, responsive websites.",
+    },
+    {
+      id: 4,
+      title: "VoiceNotes",
+      videoUrl: "public/Screen Recording 2025-06-13 120710.mp4",
+      description: "A voice note app that allows users to take notes using their voice and save them to their phone without typing.",
+    },
+    // {
+    //   id: 5,
+    //   title: "MessageCraft",
+    //   videoUrl: "public/Screen Recording 2025-06-13 104946.mp4",
+    //   description: "An AI-powered cold message generator for LinkedIn, allowing users to generate detailed, personalized messages to connect with the right people.",
+    // },
   ];
 
-  const categories = ['All', ...Array.from(new Set(projects.map(project => project.category)))];
-  
-  const filteredProjects = activeTab === 'All' 
-    ? projects 
-    : projects.filter(project => project.category === activeTab);
+  // Navigation functions
+  const goToPrevious = () => {
+    const isFirstSlide = currentIndex === 0;
+    const newIndex = isFirstSlide ? projects.length - 1 : currentIndex - 1;
+    setCurrentIndex(newIndex);
+  };
+
+  const goToNext = () => {
+    const isLastSlide = currentIndex === projects.length - 1;
+    const newIndex = isLastSlide ? 0 : currentIndex + 1;
+    setCurrentIndex(newIndex);
+  };
+
+  const activeProject = projects[currentIndex];
 
   return (
-    <section id="work" className="py-20 bg-gray-900 relative">
-      {/* Background elements */}
-      <div className="absolute left-0 bottom-1/3 w-72 h-72 bg-pink-600/10 rounded-full filter blur-3xl"></div>
-      
+    <section id="work" className="py-20 bg-gray-900">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Success Stories</h2>
-          <p className="text-gray-300">
-            Browse through our work to see if we can help you build your next MVP.
-          </p>
+        {/* Carousel Container */}
+        <div className="flex flex-col items-center mb-10">
+          <h1 className="text-4xl font-bold text-white">Past Work</h1>
+          <p className="text-gray-400">Check out some awesome projects I've worked on.</p>
         </div>
-        
-        {/* Category tabs */}
-        {/* <div className="flex flex-wrap justify-center gap-2 mb-12">
-          {categories.map((category, index) => (
-            <button
-              key={index}
-              onClick={() => setActiveTab(category)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                activeTab === category
-                  ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white'
-                  : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
-              }`}
-            >
-              {category}
-            </button>
-          ))}
-        </div> */}
-        
-        {/* Projects grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project) => (
-            <div 
-              key={project.id} 
-              className="group bg-gray-800 rounded-xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/20"
-            >
-              <div className="relative aspect-video overflow-hidden">
-                <img 
-                  src={project.imageUrl} 
-                  alt={`${project.title} - ${project.category} by CraftMVP - ${project.description}`}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-60"></div>
-                <div className="absolute bottom-4 left-4">
-                  <span className="inline-block px-3 py-1 bg-gray-900/70 backdrop-blur-sm rounded-full text-xs font-medium">
-                    {project.category}
-                  </span>
-                </div>
-              </div>
-              
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-2 group-hover:text-purple-400 transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-gray-400 mb-4">{project.description}</p>
-                
-                <div className="flex justify-between items-center">
-                  {/* <span className="text-sm text-purple-400">
-                    Delivered in {project.completedIn} days
-                  </span> */}
-                  
-                  <button onClick={() => window.open(project.link, '_blank')} className="group-hover:translate-x-1 transition-transform text-gray-300 hover:text-white">
-                    <ArrowRight size={20} />
-                  </button>
-                </div>
-              </div>
+        <div className="max-w-4xl mx-auto">
+          
+          {/* --- CHANGE 1: Title moved outside and above the video --- */}
+          <div className="h-12"> {/* Wrapper to prevent layout shift during animation */}
+            <AnimatePresence mode="wait">
+              <motion.h3
+                key={currentIndex}
+                className="text-2xl md:text-3xl font-bold text-white mb-4"
+                variants={contentVariants}
+                initial="exit"
+                animate="enter"
+                exit="exit"
+              >
+                {activeProject.title}
+              </motion.h3>
+            </AnimatePresence>
+          </div>
+
+          {/* Main display area with video */}
+          <div className="relative aspect-video overflow-hidden rounded-xl">
+            <AnimatePresence initial={false}>
+              <motion.video
+                key={currentIndex}
+                src={activeProject.videoUrl}
+                className="w-full h-full object-cover"
+                autoPlay
+                loop
+                muted
+                playsInline // Crucial for autoplay on iOS
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+              />
+            </AnimatePresence>
+          </div>
+
+          {/* Controls and Description Area */}
+          <div className="mt-6 flex justify-between items-end">
+            <div className="w-2/3">
+              <AnimatePresence mode="wait">
+                <motion.p
+                  key={currentIndex}
+                  className="text-gray-300"
+                  variants={contentVariants}
+                  initial="exit"
+                  animate="enter"
+                  exit="exit"
+                >
+                  {activeProject.description}
+                </motion.p>
+              </AnimatePresence>
             </div>
-          ))}
+            {/* Navigation arrows */}
+            <div className="flex gap-4">
+              <button 
+                onClick={goToPrevious}
+                className="p-3 bg-gray-800 rounded-full text-gray-400 hover:bg-gray-700 hover:text-white transition-colors"
+                aria-label="Previous project"
+              >
+                <ArrowLeft size={20} />
+              </button>
+              <button 
+                onClick={goToNext}
+                className="p-3 bg-gray-800 rounded-full text-gray-400 hover:bg-gray-700 hover:text-white transition-colors"
+                aria-label="Next project"
+              >
+                <ArrowRight size={20} />
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </section>
