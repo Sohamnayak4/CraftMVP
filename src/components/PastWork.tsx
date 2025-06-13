@@ -33,25 +33,25 @@ export const PastWork = () => {
     {
       id: 1,
       title: "FocusTube",
-      videoUrl: "public/Screen Recording 2025-06-13 103320.mp4", 
+      videoUrl: "Screen Recording 2025-06-13 103320.mp4", 
       description: "A chrome extension that helps you focus while using YouTube for work and education.",
     },
     {
       id: 2,
       title: "LuxeDrive",
-      videoUrl: "public/Screen Recording 2025-06-13 110055.mp4",
+      videoUrl: "Screen Recording 2025-06-13 110055.mp4",
       description: "A car rental website that allows users to rent cars from a wide variety of cars and locations.",
     },
     {
       id: 3,
       title: "ModernUI",
-      videoUrl: "public/Screen Recording 2025-06-13 111403.mp4",
+      videoUrl: "Screen Recording 2025-06-13 111403.mp4",
       description: "A modern UI design system for creating beautiful, responsive websites.",
     },
     {
       id: 4,
       title: "VoiceNotes",
-      videoUrl: "public/Screen Recording 2025-06-13 120710.mp4",
+      videoUrl: "Screen Recording 2025-06-13 120710.mp4",
       description: "A voice note app that allows users to take notes using their voice and save them to their phone without typing.",
     },
     // {
