@@ -4,7 +4,6 @@ import { Hero } from './components/Hero';
 import { PricingPlans } from './components/PricingPlans';
 import { PastWork } from './components/PastWork';
 import { Footer } from './components/Footer';
-import { Analytics } from '@vercel/analytics/react';
 import { Testimonials } from './components/Testimonials';
 
 function App() {
@@ -19,7 +18,6 @@ function App() {
         {/* <Testimonials /> */}
       </main>
       <Footer />
-      <Analytics />
     </div>
   );
 }
